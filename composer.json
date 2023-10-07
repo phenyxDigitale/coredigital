@@ -1,0 +1,31 @@
+{
+    "name": "phenyxdigitale/coredigital",
+    "description": "Deploy Ephenyx Digital Core",  
+    "homepage": "https://github.com/phenyxdigitale/coredigital",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jeff Hunger",
+            "homepage": "https://ephenyx.com"
+        }
+    ],    
+    "require": {
+        "php": "^8.0",
+        "defuse/php-encryption": "^2",
+        "nicolab/php-ftp-client": "^2",
+        "smarty/smarty": "^4",
+        "php-curl-class/php-curl-class": "^9",
+        "phpmailer/phpmailer": "^6.6",
+        "pear/archive_tar": "^1.4",
+        "phenyxdigitale/digitalspreadsheet": "^4",
+        "rosell-dk/webp-convert": "^2",			
+        "rosell-dk/webp-convert-cloud-service": "^2",
+        "rosell-dk/dom-util-for-webp": "^0.6",
+        "phenyxdigitale/einvoice": "^1"
+    },  
+	"autoload": {
+		"classmap": {"digitalCore": "src/"},
+        "files": ["digitalcore.composer.php"]
+	}
+}

@@ -300,511 +300,220 @@ class StudentEducationCore extends PhenyxObjectModel {
         return $certifications;
     }
     
-    public function getParamFields() {
+    public function compileArchive() {
         
-       
-		$this->paramFields = [
-            [
-                'title'    => 'ID',
-                'maxWidth' => 70,
-                'dataIndx' => 'id_student_education',
-                'dataType' => 'integer',
-                'editable' => false,
-                'vdi'      => true,
-                'align'    => 'center',
-                'valign'   => 'center',
-                'session'  => true,
-                'filter'   => [
-                    'crules' => [['condition' => "begin"]],
-                ],
-            ],
-            [
-                'title'    => $this->l('Organism'),
-
-                'dataIndx' => 'organism_name',
-                'minWidth' => 100,
-                'align'    => 'right',
-                'valign'   => 'center',
-                'align'    => 'left',
-                'session'  => true,
-                'dataType' => 'string',
-                'editable' => true,
-				'render'   => "getOrganism",
-                'filter'   => [
-                    'crules' => [['condition' => "contain"]],
-                ],
-
-            ],
-            [
-                'title'    => $this->l('Organism Reference'),
-
-                'dataIndx' => 'reference_organism',
-                'maxWidth' => 150,
-                'align'    => 'right',
-                'valign'   => 'center',
-                'align'    => 'left',
-                'session'  => true,
-                'dataType' => 'string',
-                'editable' => true,
-                'editor'   => [
-                    'type'    => "textbox",
-                    'cls'     => "highlight"
-                ],
-                'filter'   => [
-                    'crules' => [['condition' => "contain"]],
-                ],
-
-            ],
-            [
-
-                'dataIndx'   => 'id_user',
-                'dataType'   => 'integer',
-                'align'      => 'center',
-                'hiddenable' => 'no',
-                'hidden'     => true,
-
-            ],
-            [
-
-                'dataIndx'   => 'is_edof',
-                'dataType'   => 'integer',
-                'hidden'     => true,
-                'hiddenable' => 'no',
-            ],
-            [
-                'title'      => $this->l('Starting date'),
-
-                'minWidth'   => 150,
-                'dataIndx'   => 'date_start',
-                'align'      => 'center',
-                'valign'     => 'center',
-                'cls'        => 'rangeDate',
-                'session'    => true,
-                'expedition' => true,
-                'dataType'   => 'date',
-                'format'     => 'dd/mm/yy',
-                'editable'   => false,
-                'sortable'   => false,
-
-            ],
-            [
-                'title'    => $this->l('End date'),
-
-                'maxWidth' => 200,
-                'dataIndx' => 'date_end',
-                'align'    => 'center',
-                'valign'   => 'center',
-                'cls'      => 'rangeDate',
-                'dataType' => 'date',
-                'format'   => 'dd/mm/yy',
-                'editable' => false,
-                'hidden'   => true,
-                'editable' => false,
-                'sortable' => false,
-
-            ],
-            [
-                'title'      => $this->l('Social title'),
-                'width'      => 100,
-                'dataIndx'   => 'title',
-                'align'      => 'center',
-                'valign'     => 'center',
-                'dataType'   => 'string',
-                'editable'   => false,
-                'hidden'     => true,
-                'expedition' => true,
-                'caliopi'    => true,
-                'sortable'   => false,
-
-            ],
-            [
-                'title'      => $this->l('First Name'),
-                'maxWidth'   => 150,
-                'exWidth'    => 25,
-                'dataIndx'   => 'firstname',
-                'align'      => 'left',
-                'valign'     => 'center',
-                'session'    => true,
-                'vdi'        => true,
-                'expedition' => true,
-                'editable'   => false,
-                'dataType'   => 'string',
-                'filter'     => [
-                    'crules' => [['condition' => "contain"]],
-                ],
-                'caliopi'    => true,
-            ],
-            [
-                'title'      => $this->l('Last Name'),
-                'maxWidth'   => 150,
-                'exWidth'    => 25,
-                'dataIndx'   => 'lastname',
-                'session'    => true,
-                'vdi'        => true,
-                'expedition' => true,
-                'dataType'   => 'string',
-                'valign'     => 'center',
-                'editable'   => false,
-                'filter'     => [
-                    'crules' => [['condition' => "contain"]],
-                ],
-                'caliopi'    => true,
-
-            ],
-            [
-                'title'      => $this->l('Birth name'),
-                'width'      => 100,
-                'exWidth'    => 25,
-                'dataIndx'   => 'birthname',
-                'dataType'   => 'string',
-                'expedition' => true,
-                'valign'     => 'center',
-                'hidden'     => true,
-                'filter'     => [
-                    'crules' => [['condition' => "contain"]],
-                ],
-                'editable'   => false,
-
-            ],
-            [
-                'title'    => $this->l('Email address'),
-                'width'    => 150,
-                'cls'      => 'jsCopyClipBoard',
-                'dataIndx' => 'email',
-                'dataType' => 'string',
-                'valign'   => 'center',
-                'editable' => false,
-                'vdi'      => true,
-                'hidden'   => true,
-                'session'  => true,
-                'filter'   => [
-                    'crules' => [['condition' => "contain"]],
-                ],
-
-            ],
-            [
-                'title'      => $this->l('Mobile Phone'),
-                'width'      => 150,
-                'dataIndx'   => 'phone_mobile',
-                'valign'     => 'center',
-                'align'      => 'left',
-                'cls'        => 'jsCopyClipBoard',
-                'dataType'   => 'string',
-                'editable'   => false,
-                'session'    => true,
-                'expedition' => true,
-                'hidden'     => true,
-
-                'sortable'   => false,
-                'filter'     => [
-                    'crules' => [['condition' => "contain"]],
-                ],
-            ],
-            [
-                'title'    => $this->l('Training'),
-                'width'    => 150,
-                'dataIndx' => 'name',
-                'align'    => 'left',
-                'valign'   => 'center',
-                'session'  => true,
-                'vdi'      => true,
-                'dataType' => 'string',
-                'editable' => false,
-                'hidden'   => false,
-                'caliopi'  => true,
-                'filter'   => [
-                    'crules' => [['condition' => "begin"]],
-                ],
-            ],
-            [
-                'title'        => $this->l('Amount tax excl.'),
-
-                'dataIndx'     => 'price',
-                'align'        => 'right',
-                'valign'       => 'center',
-                'dataType'     => 'float',
-                'numberFormat' => '#,##0.00_-"€"',
-                'editable'     => false,
-                'format'       => "#.###,00 € ",
-                'updatable'    => false,
-                'session'      => true,
-                'summary'      => [
-                    'type' => 'sum',
-                ],
-                'sortable'     => false,
-            ],
-            [
-                'title'        => $this->l('Amount tax incl.'),
-
-                'dataIndx'     => 'FinalPrice',
-                'align'        => 'right',
-                'valign'       => 'center',
-                'dataType'     => 'float',
-                'numberFormat' => '#,##0.00_-"€"',
-                'editable'     => false,
-                'format'       => "#.###,00 € ",
-                'updatable'    => false,
-                'hidden'       => true,
-                'sortable'     => false,
-
-            ],
-            [
-                'title'    => $this->l('Duration of study'),
-                'dataIndx' => 'education_lenghts',
-                'align'    => 'center',
-                'valign'   => 'center',
-                'dataType' => 'html',
-                'session'  => true,
-                'vdi'      => true,
-                'editable' => true,
-                'editor'   => [
-                    'type'    => "textbox",
-                ],
-                
-                'caliopi'  => true,
-                'sortable' => false,
-            ],
-            [
-                'title'    => $this->l('Percentage Completed'),
-
-                'dataIndx' => 'ratio',
-                'align'    => 'center',
-                'valign'   => 'center',
-                'dataType' => 'string',
-                'session'  => true,
-                'editable' => false,
-                'caliopi'  => true,
-                'sortable' => false,
-            ],
-            [
-                'title'      => $this->l('Notes'),
-                'dataIndx'   => 'notes',
-                'align'      => 'left',
-                'valign'     => 'center',
-                'expedition' => true,
-                'align'      => 'left',
-                'dataType'   => 'string',
-                'editable'   => true,
-                'editor'   => [
-                    'type'    => "textbox",
-                ],
-                'sortable'   => false,
-                'hidden'   => true,
-
-            ],
-            [
-
-                'title'    => $this->l('Certification'),
-                'dataIndx' => 'certificationName',
-                'align'    => 'right',
-                'valign'   => 'center',
-                'align'    => 'left',
-                'dataType' => 'html',
-                'session'  => true,
-                'hidden'   => false,
-                'caliopi'  => true,
-                'sortable' => false,
-                'editable' => false,
-            ],
-            [
-
-                'title'    => $this->l('Passage of Certification'),
-                'dataIndx' => 'certif_state',
-                'align'    => 'center',
-                'valign'   => 'center',
-                'dataType' => 'html',
-                'session'  => true,
-                'hidden'   => false,
-                'caliopi'  => true,
-                'sortable' => false,
-                'editable' => false,
-            ],
-            [
-
-                'dataIndx'   => 'id_customer_piece',
-                'dataType'   => 'integer',
-                'hidden'     => true,
-                'hiddenable' => 'no',
-
-            ]
-
-        ];
         
-        if ($this->use_session) {
+        $context = Context::getContext();
+        
+        $idRequest = ParagridRequest::getRequestIdBy('StudentEducation');
 
-            $this->paramFields[] = [
-
-                'dataIndx'   => 'id_education_session',
-                'dataType'   => 'integer',
-                'hidden'     => true,
-                'hiddenable' => 'no',
-
-            ];
-
-            $this->paramFields[] = [
-
-                'title'    => $this->l('Session'),
-                'minWidth' => 150,
-                'dataIndx' => 'dateSession',
-                'valign'   => 'center',
-                'dataType' => 'string',
-                'hidden'   => false,
-                'vdi'      => true,
-                'align'    => 'left',
-                'editable' => false,
-                'sortable' => false,
-
-            ];
+        if ($idRequest > 0) {
+            $request = new ParagridRequest($idRequest, $context->language->id);
+            
+        } else {
+            $request = new ParagridRequest();
+            $request->class = 'StudentEducation';
         }
-
-      
+        $context = Context::getContext();
+        $query = new DbQuery();
+        $query->select('s.*, sl.name, c.firstname, c.lastname, c.birthname, c.email, c.password, gl.name as title, e.is_edof,  cer.name as certificationName,   sep.id_student_education_prerequis, o.`organism_name`,  a.phone, a.phone_mobile, a.postcode, a.city');
         if ($this->use_education_step) {
-
-            $this->paramFields[] = [
-
-                'title'      => 'id session state',
-                'dataIndx'   => 'id_student_education_state',
-                'dataType'   => 'integer',
-                'hidden'     => true,
-               'hiddenable' => 'no',
-
-            ];
-
-            $this->paramFields[] = [
-
-                'title'      => $this->l('Etat'),
-                'maxWidth'   => 300,
-                'dataIndx'   => 'state',
-                'dataType'   => 'string',
-                'valign'     => 'center',
-                'expedition' => true,
-                'align'      => 'left',
-                'session'    => true,
-                'editable'   => false,
-                'sortable'   => false,
-
-            ];
+            $query->select('est.`name` as state');
         }
-
+        if ($this->use_session) {
+            $query->select('es.name as `dateSession`, es.session_date');
+        }
         if ($this->use_education_platform) {
-
-            $this->paramFields[] = [
-
-                'dataIndx'   => 'educationPlatform',
-                'dataType'   => 'integer',
-                'align'      => 'center',
-                'hiddenable' => 'no',
-                'hidden'     => true,
-
-            ];
-
-            $this->paramFields[] = [
-
-                'title'    => $this->l('Connection identifier'),
-
-                'dataIndx' => 'identifiant',
-                'align'    => 'right',
-                'valign'   => 'center',
-                'session'  => false,
-                'align'    => 'left',
-                'dataType' => 'string',
-                'editable' => false,
-                'hidden'   => true,
-                'sortable' => false,
-
-            ];
-            $this->paramFields[] = [
-
-                'title'    => $this->l('Login password'),
-
-                'dataIndx' => 'passwd_link',
-                'align'    => 'right',
-                'valign'   => 'center',
-                'align'    => 'left',
-                'session'  => false,
-                'dataType' => 'string',
-                'editable' => false,
-                'hidden'   => true,
-                'sortable' => false,
-
-            ];
-            $this->paramFields[] = [
-
-                'title'    => $this->l('First connection'),
-
-                'dataIndx' => 'first_connection',
-                'minWidth' => 150,
-                'align'    => 'center',
-                'valign'   => 'center',
-                'dataType' => 'date',
-                'format'   => 'dd/mm/yy',
-                'session'  => false,
-                'vdi'      => true,
-                'editable' => true,
-                'hidden'   => false,
-                'cls'      => 'pq-calendar pq-side-icon',
-                'editor'   => [
-                    'type'    => "textbox",
-                    'init'    => 'dateEditor',
-                    'getData' => 'getDataDate',
-                ],
-
-                'sortable' => false,
-                'render'   => 'renderDateGrid',
-
-            ];
+            $query->select('e.id_platform as educationPlatform');
         }
-
         if ($this->use_education_device) {
-            $this->paramFields[] = [
-
-                'title'      => $this->l('Training device'),
-                'dataIndx'   => 'supplyName',
-                'align'      => 'right',
-                'valign'     => 'center',
-                'expedition' => true,
-                'align'      => 'left',
-                'dataType'   => 'string',
-                'editable'   => false,
-                'sortable'   => false,
-
-            ];
-            $this->paramFields[] = [
-
-                'title'    => $this->l('Tracking number'),
-
-                'dataIndx' => 'shipping_number',
-                'align'    => 'right',
-                'valign'   => 'center',
-                'align'    => 'left',
-                'session'  => false,
-                'dataType' => 'string',
-                'editable' => true,
-                'editor'   => [
-                    'type'    => "textbox",
-                ],
-                'hidden'   => false,
-                'sortable' => false,
-
-            ];
+            $query->select('esu.name as supplyName');
         }
+        $query->from('student_education', 's');
+        $query->leftJoin('student_education_lang', 'sl', 'sl.`id_student_education` = s.`id_student_education` AND sl.id_lang = ' . $context->language->id);
+        $query->leftJoin('certification_lang', 'cer', 'cer.`id_certification` = s.`id_certification` AND cer.id_lang = ' . $context->language->id);
+        $query->leftJoin('organism', 'o', 'o.`id_organism` = s.`id_organism`');
+        $query->leftJoin('user', 'c', 'c.`id_user` = s.`id_user`');
+        $query->innerJoin('address', 'a', 'a.`id_user` = c.`id_user`');
+        if ($this->use_education_step) {
+            $query->leftJoin('student_education_state_lang', 'est', 'est.`id_student_education_state` = s.`id_student_education_state` AND est.`id_lang` = ' . $context->language->id);
+        }
+        if ($this->use_session) {
+            $query->leftJoin('education_session', 'es', 'es.`id_education_session` = s.`id_education_session`');
+        }
+        $query->leftJoin('product', 'e', 'e.`id_product` = s.`id_product`');
+        $query->leftJoin('gender_lang', 'gl', 'gl.`id_gender` = c.`id_gender` AND gl.`id_lang` = ' . $context->language->id);
+        if ($this->use_education_device) {
+            $query->leftJoin('education_supplies', 'esu', 'esu.`id_education_supplies` = s.`id_education_supplies` ');
+        }
+        $query->leftJoin('student_education_prerequis', 'sep', 'sep.`id_student_education` = s.`id_student_education` ');
+        $query->where('s.deleted = 0');
+        $query->where('s.is_invoice = 1');
+        $query->orderBy('date_start DESC');
 
-        if ($this->use_education_platform) {
-            $this->paramFields[] = [
+        $students = Db::getInstance(_EPH_USE_SQL_SLAVE_)->executeS($query);
 
-                'dataIndx'   => 'educationPlatform',
-                'dataType'   => 'integer',
-                'align'      => 'center',
-                'hiddenable' => 'no',
-                'hidden'     => true,
+        foreach ($students as &$student) {
 
-            ];
+            if ($student['pass_certif']) {
+                $student['certif_state'] = '<div style="color:green"><i class="fa-duotone fa-check"></i></div>';
+            } else {
+                $student['certif_state'] = '<div style="color:red"><i class="fa-duotone fa-xmark"></i></div>';
+            }
+
+            $educations = Product::getEducationDetails($student['id_product'], $student['id_product_attribute'], false);
+
+            foreach ($educations as $key => $value) {
+
+                $student[$key] = $value;
+            }
+
+            $student['FinalPrice'] = $student['price'] * (1 + $student['rate'] / 100);
+
+            if ($this->use_sale_agent) {
+                $student['agent'] = '';
+
+                if ($student['id_sale_agent'] > 0) {
+                    $agent = SaleAgent::getSaleAgentbyId($student['id_sale_agent']);
+                    $student['agent'] = $agent['firstname'] . ' ' . $agent['lastname'];
+                }
+
+            }
+
+            if ($this->use_education_step) {
+
+                if ($student['id_student_education_state'] > 6) {
+                    $student['connexionLenght'] = (int) str_replace(":", "", $student['education_lenghts']) > 0 ? 1 : 0;
+                    $time = strtotime($student['session_date']);
+
+                    $lenght = explode(":", $student['education_lenghts']);
+                    $time = Tools::convertTimetoHex($lenght[0], $lenght[1]);
+
+                    if ($student['hours'] > 0) {
+                        $student['ratio'] = round($time * 100 / $student['hours'], 2) . ' %';
+                    } else {
+                        $student['ratio'] = '0 %';
+                    }
+
+                } else {
+                    $student['ratio'] = '0 %';
+                }
+
+            }
+
+            if (!Validate::isUnsignedId($student['id_student_education_prerequis'])) {
+                $student['id_student_education_prerequis'] = 0;
+            }
+
         }
 
         
-        return PhenyxObjectModel::getParamFields();
+        $request->archive = Tools::jsonEncode($students, JSON_HEX_QUOT | JSON_HEX_TAG);
 
-	}
+        if ($idRequest > 0) {
+            $request->update();
+        } else {
+            $request->add();
+        }
+    }
+    
+    public function updateCompile() {
+
+        $context = Context::getContext();
+        $query = new DbQuery();
+        $query->select('s.*, sl.name, c.firstname, c.lastname, c.birthname, c.email, c.password, gl.name as title, e.is_edof,  cer.name as certificationName,   sep.id_student_education_prerequis, o.`organism_name`,  a.phone, a.phone_mobile, a.postcode, a.city');
+        if ($this->use_education_step) {
+            $query->select('est.`name` as state');
+        }
+        if ($this->use_session) {
+            $query->select('es.name as `dateSession`, es.session_date');
+        }
+        if ($this->use_education_platform) {
+            $query->select('e.id_platform as educationPlatform');
+        }
+        if ($this->use_education_device) {
+            $query->select('esu.name as supplyName');
+        }
+        $query->from('student_education', 's');
+        $query->leftJoin('student_education_lang', 'sl', 'sl.`id_student_education` = s.`id_student_education` AND sl.id_lang = ' . $context->language->id);
+        $query->leftJoin('certification_lang', 'cer', 'cer.`id_certification` = s.`id_certification` AND cer.id_lang = ' . $context->language->id);
+        $query->leftJoin('organism', 'o', 'o.`id_organism` = s.`id_organism`');
+        $query->leftJoin('user', 'c', 'c.`id_user` = s.`id_user`');
+        $query->innerJoin('address', 'a', 'a.`id_user` = c.`id_user`');
+        if ($this->use_education_step) {
+            $query->leftJoin('student_education_state_lang', 'est', 'est.`id_student_education_state` = s.`id_student_education_state` AND est.`id_lang` = ' . $context->language->id);
+        }
+        if ($this->use_session) {
+            $query->leftJoin('education_session', 'es', 'es.`id_education_session` = s.`id_education_session`');
+        }
+        $query->leftJoin('product', 'e', 'e.`id_product` = s.`id_product`');
+        $query->leftJoin('gender_lang', 'gl', 'gl.`id_gender` = c.`id_gender` AND gl.`id_lang` = ' . $context->language->id);
+        if ($this->use_education_device) {
+            $query->leftJoin('education_supplies', 'esu', 'esu.`id_education_supplies` = s.`id_education_supplies` ');
+        }
+        $query->leftJoin('student_education_prerequis', 'sep', 'sep.`id_student_education` = s.`id_student_education` ');
+        $query->where('s.deleted = 0');
+        $query->orderBy('date_start DESC');
+        $query->where('s.id_student_education = ' . (int) $this->id);
+        
+        $newEducation = Db::getInstance()->getRow($query);
+
+		if ($newEducation['pass_certif']) {
+			$newEducation['certif_state'] = '<div style="color:green"><i class="fa-duotone fa-check"></i></div>';
+		} else {
+			$newEducation['certif_state'] = '<div style="color:red"><i class="fa-duotone fa-xmark"></i></div>';
+		}
+
+		$educations = Product::getEducationDetails($newEducation['id_product'], $newEducation['id_product_attribute'], false);
+
+		foreach ($educations as $key => $value) {
+			$newEducation[$key] = $value;
+		}
+
+		$newEducation['FinalPrice'] = $newEducation['price'] * (1 + $newEducation['rate'] / 100);
+
+		if ($this->use_sale_agent) {
+			$newEducation['agent'] = '';
+
+			if ($newEducation['id_sale_agent'] > 0) {
+				$agent = SaleAgent::getSaleAgentbyId($newEducation['id_sale_agent']);
+				$newEducation['agent'] = $agent['firstname'] . ' ' . $agent['lastname'];
+			}
+
+		}
+
+		if ($newEducation['id_student_education_state'] > 6) {
+			$newEducation['connexionLenght'] = (int) str_replace(":", "", $newEducation['education_lenghts']) > 0 ? 1 : 0;
+			$time = strtotime($newEducation['date_start']);
+
+			$lenght = explode(":", $newEducation['education_lenghts']);
+			$time = Tools::convertTimetoHex($lenght[0], $lenght[1]);
+
+			if ($newEducation['hours'] > 0) {
+				$newEducation['ratio'] = round($time * 100 / $newEducation['hours'], 2) . ' %';
+			} else {
+				$newEducation['ratio'] = '0 %';
+			}
+
+		} else {
+			$newEducation['ratio'] = '0 %';
+		}
+
+		if (!Validate::isUnsignedId($newEducation['id_student_education_prerequis'])) {
+			$newEducation['id_student_education_prerequis'] = 0;
+		}
+
+        
+
+        $idRequest = ParagridRequest::getRequestIdBy('StudentEducation');
+        $request = new ParagridRequest($idRequest);
+        $educations = $request->archive;
+
+        array_unshift($educations, $newEducation);
+
+        $request->archive = Tools::jsonEncode($educations, JSON_HEX_QUOT | JSON_HEX_TAG);
+        $request->update();
+    }
 
 
 	public function add($autoDate = true, $nullValues = true) {
@@ -821,6 +530,8 @@ class StudentEducationCore extends PhenyxObjectModel {
 
 		$success = parent::add($autoDate, $nullValues);
 
+		$refresh = Configuration::get('EPH_FULL_CACHE_MODE');
+
 		if ($success) {
 			$context = Context::getContext();
 
@@ -835,6 +546,10 @@ class StudentEducationCore extends PhenyxObjectModel {
 
 			}
 
+		}
+
+		if ($refresh) {
+			$this->addArchive();
 		}
 
 		return $success;
@@ -894,17 +609,30 @@ class StudentEducationCore extends PhenyxObjectModel {
 			if ($saleAgent->sale_commission_amount == 0 || $saleAgent->employee_type == 'Salarié') {
 				$result = parent::update($nullValues);
 
+				if ($refresh) {
+					//$this->updateArchive();
+				}
+
 				return $result;
 
 			}
 
 			$this->commission_amount = $saleAgent->sale_commission_amount;
 
+			if ($refresh) {
+				//$saleAgent->updateArchive();
+			}
 
 		}
 
 		$result = parent::update($nullValues);
 
+		if ($refresh) {
+		//	$this->updateArchive();
+		}
+        if(!$is_invoice && $reindex && $this->id_student_education_state == 9) {
+          //  $this->updateCompile();
+        }
 
 		return $result;
 
@@ -940,10 +668,16 @@ class StudentEducationCore extends PhenyxObjectModel {
 				->where('`id_student_education` = ' . (int) $this->id)
 		);
 
-		
+		if ($refresh) {
+			$this->removeArchive();
+			$user = new User($this->id_user);
+		}
 
 		$success = parent::delete();
 
+		if ($refresh) {
+			$user->updateArchive();
+		}
 
 		return $success;
 	}
@@ -1018,6 +752,346 @@ class StudentEducationCore extends PhenyxObjectModel {
 					->where('eal.id_lang = ' . $idLang)
 			);
 		}
+
+	}
+
+	public function getRequest() {
+
+		$context = Context::getContext();
+		$idRequest = ParagridRequest::getRequestIdBy('StudentEducation');
+
+		if ($idRequest > 0) {
+			$request = new ParagridRequest($idRequest, $context->language->id);
+
+			if (!empty($request->request) && is_array($request->request) && count($request->request)) {
+				return $request->request;
+			}
+
+		}
+
+		return self::archiveRequest();
+
+	}
+
+	public function updateArchive() {
+
+		$context = Context::getContext();
+		$query = new DbQuery();
+		$query->select('s.*, sl.name, c.firstname, c.lastname, c.birthname, c.email, c.password, est.`name` as state, gl.name as title, cer.name as certificationName, sep.id_student_education_prerequis,  a.phone, a.phone_mobile, a.postcode, a.city');
+
+		if ($this->use_session) {
+			$query->select('es.name as `dateSession`, es.session_date');
+		}
+
+		if ($this->use_education_device) {
+			$query->select('esu.name as supplyName');
+		}
+
+		if ($this->use_education_platform) {
+			$query->select('e.id_platform as educationPlatform');
+		}
+
+		$query->from('student_education', 's');
+		$query->leftJoin('student_education_lang', 'sl', 'sl.`id_student_education` = s.`id_student_education` AND sl.id_lang = ' . $context->language->id);
+		$query->leftJoin('certification_lang', 'cer', 'cer.`id_certification` = s.`id_certification` AND cer.id_lang = ' . $context->language->id);
+		$query->leftJoin('user', 'c', 'c.`id_user` = s.`id_user`');
+		$query->innerJoin('address', 'a', 'a.`id_user` = c.`id_user`');
+		$query->leftJoin('student_education_state_lang', 'est', 'est.`id_student_education_state` = s.`id_student_education_state` AND est.`id_lang` = ' . $context->language->id);
+
+		if ($this->use_session) {
+			$query->leftJoin('education_session', 'es', 'es.`id_education_session` = s.`id_education_session`');
+		}
+
+		$query->leftJoin('product', 'e', 'e.`id_product` = s.`id_product`');
+		$query->leftJoin('gender_lang', 'gl', 'gl.`id_gender` = c.`id_gender` AND gl.`id_lang` = ' . $context->language->id);
+
+		if ($this->use_education_device) {
+			$query->leftJoin('education_supplies', 'esu', 'esu.`id_education_supplies` = s.`id_education_supplies` ');
+		}
+
+		$query->leftJoin('student_education_prerequis', 'sep', 'sep.`id_student_education` = s.`id_student_education` ');
+		$query->where('s.deleted = 0');
+		$query->where('s.id_student_education = ' . (int) $this->id);
+		$newStudent = Db::getInstance()->getRow($query);
+
+		if ($newStudent['pass_certif']) {
+			$newStudent['certif_state'] = '<div style="color:green"><i class="fa-duotone fa-check"></i></div>';
+		} else {
+			$newStudent['certif_state'] = '<div style="color:red"><i class="fa-duotone fa-xmark"></i></div>';
+		}
+
+		$educations = Product::getEducationDetails($newStudent['id_product'], $newStudent['id_product_attribute'], false);
+
+		foreach ($educations as $key => $value) {
+			$newStudent[$key] = $value;
+		}
+
+		$newStudent['FinalPrice'] = $newStudent['price'] * (1 + $newStudent['rate'] / 100);
+
+		if ($this->use_sale_agent) {
+			$newStudent['agent'] = '';
+
+			if ($newStudent['id_sale_agent'] > 0) {
+				$agent = SaleAgent::getSaleAgentbyId($newStudent['id_sale_agent']);
+				$newStudent['agent'] = $agent['firstname'] . ' ' . $agent['lastname'];
+			}
+
+		}
+
+		if ($newStudent['id_student_education_state'] > 6) {
+			$newStudent['connexionLenght'] = (int) str_replace(":", "", $newStudent['education_lenghts']) > 0 ? 1 : 0;
+			$time = strtotime($newStudent['date_start']);
+
+			$lenght = explode(":", $newStudent['education_lenghts']);
+			$time = Tools::convertTimetoHex($lenght[0], $lenght[1]);
+
+			if ($newStudent['hours'] > 0) {
+				$newStudent['ratio'] = round($time * 100 / $newStudent['hours'], 2) . ' %';
+			} else {
+				$newStudent['ratio'] = '0 %';
+			}
+
+		} else {
+			$newStudent['ratio'] = '0 %';
+		}
+
+		if (!Validate::isUnsignedId($newStudent['id_student_education_prerequis'])) {
+			$newStudent['id_student_education_prerequis'] = 0;
+		}
+
+		$idRequest = ParagridRequest::getRequestIdBy('StudentEducation');
+		$request = new ParagridRequest($idRequest, $context->language->id);
+		$students = $request->request;
+
+		foreach ($students as &$student) {
+
+			if ($student['id_student_education'] == (int) $this->id) {
+
+				foreach ($student as $key => $value) {
+
+					if (array_key_exists($key, $newStudent)) {
+						$student[$key] = $newStudent[$key];
+					}
+
+				}
+
+				break;
+			}
+
+		}
+
+		$request->request = Tools::jsonEncode($students, JSON_HEX_QUOT | JSON_HEX_TAG);
+		$request->update();
+	}
+
+	public static function archiveRequest() {
+
+		$context = Context::getContext();
+		$idRequest = ParagridRequest::getRequestIdBy('StudentEducation');
+
+		if ($idRequest > 0) {
+			$request = new ParagridRequest($idRequest, $context->language->id);
+		} else {
+			$request = new ParagridRequest();
+			$request->class = 'StudentEducation';
+		}
+
+		$query = new DbQuery();
+		$query->select('s.*, sl.name, c.firstname, c.lastname, c.birthname, c.email, c.password, est.`name` as state, gl.name as title, cer.name as certificationName, sep.id_student_education_prerequis,  a.phone, a.phone_mobile, a.postcode, a.city');
+
+		if ($this->use_session) {
+			$query->select('es.name as `dateSession`, es.session_date');
+		}
+
+		if ($this->use_education_device) {
+			$query->select('esu.name as supplyName');
+		}
+
+		if ($this->use_education_platform) {
+			$query->select('e.id_platform as educationPlatform');
+		}
+
+		$query->from('student_education', 's');
+		$query->leftJoin('student_education_lang', 'sl', 'sl.`id_student_education` = s.`id_student_education` AND sl.id_lang = ' . $context->language->id);
+		$query->leftJoin('certification_lang', 'cer', 'cer.`id_certification` = s.`id_certification` AND cer.id_lang = ' . $context->language->id);
+		$query->leftJoin('user', 'c', 'c.`id_user` = s.`id_user`');
+		$query->innerJoin('address', 'a', 'a.`id_user` = c.`id_user`');
+		$query->leftJoin('student_education_state_lang', 'est', 'est.`id_student_education_state` = s.`id_student_education_state` AND est.`id_lang` = ' . $context->language->id);
+
+		if ($this->use_session) {
+			$query->leftJoin('education_session', 'es', 'es.`id_education_session` = s.`id_education_session`');
+		}
+
+		$query->leftJoin('product', 'e', 'e.`id_product` = s.`id_product`');
+		$query->leftJoin('gender_lang', 'gl', 'gl.`id_gender` = c.`id_gender` AND gl.`id_lang` = ' . $context->language->id);
+
+		if ($this->use_education_device) {
+			$query->leftJoin('education_supplies', 'esu', 'esu.`id_education_supplies` = s.`id_education_supplies` ');
+		}
+
+		$query->leftJoin('student_education_prerequis', 'sep', 'sep.`id_student_education` = s.`id_student_education` ');
+		$query->where('s.deleted = 0');
+		$query->orderBy('date_start DESC');
+
+		$students = Db::getInstance(_EPH_USE_SQL_SLAVE_)->executeS($query);
+
+		foreach ($students as &$student) {
+
+			if ($student['pass_certif']) {
+				$student['certif_state'] = '<div style="color:green"><i class="fa-duotone fa-check"></i></div>';
+			} else {
+				$student['certif_state'] = '<div style="color:red"><i class="fa-duotone fa-xmark"></i></div>';
+			}
+
+			$educations = Product::getEducationDetails($student['id_product'], $student['id_product_attribute'], false);
+
+			foreach ($educations as $key => $value) {
+
+				$student[$key] = $value;
+			}
+
+			$student['FinalPrice'] = $student['price'] * (1 + $student['rate'] / 100);
+
+			if ($this->use_sale_agent) {
+				$student['agent'] = '';
+
+				if ($student['id_sale_agent'] > 0) {
+					$agent = SaleAgent::getSaleAgentbyId($student['id_sale_agent']);
+					$student['agent'] = $agent['firstname'] . ' ' . $agent['lastname'];
+				}
+
+			}
+
+			if ($student['id_student_education_state'] > 6) {
+				$student['connexionLenght'] = (int) str_replace(":", "", $student['education_lenghts']) > 0 ? 1 : 0;
+				$time = strtotime($student['date_start']);
+
+				$lenght = explode(":", $student['education_lenghts']);
+				$time = Tools::convertTimetoHex($lenght[0], $lenght[1]);
+
+				if ($student['hours'] > 0) {
+					$student['ratio'] = round($time * 100 / $student['hours'], 2) . ' %';
+				} else {
+					$student['ratio'] = '0 %';
+				}
+
+			} else {
+				$student['ratio'] = '0 %';
+			}
+
+			if (!Validate::isUnsignedId($student['id_student_education_prerequis'])) {
+				$student['id_student_education_prerequis'] = 0;
+			}
+
+		}
+
+		$request->request = Tools::jsonEncode($students, JSON_HEX_QUOT | JSON_HEX_TAG);
+
+		if ($idRequest > 0) {
+			$request->update();
+		} else {
+			$request->add();
+		}
+
+		return $students;
+
+	}
+
+	public function addArchive() {
+
+		$context = Context::getContext();
+		$query = new DbQuery();
+		$query->select('s.*, sl.name, c.firstname, c.lastname, c.birthname, c.email, c.password, est.`name` as state, gl.name as title, cer.name as certificationName, sep.id_student_education_prerequis,  a.phone, a.phone_mobile, a.postcode, a.city');
+
+		if ($this->use_session) {
+			$query->select('es.name as `dateSession`, es.session_date');
+		}
+
+		if ($this->use_education_device) {
+			$query->select('esu.name as supplyName');
+		}
+
+		if ($this->use_education_platform) {
+			$query->select('e.id_platform as educationPlatform');
+		}
+
+		$query->from('student_education', 's');
+		$query->leftJoin('student_education_lang', 'sl', 'sl.`id_student_education` = s.`id_student_education` AND sl.id_lang = ' . $context->language->id);
+		$query->leftJoin('certification_lang', 'cer', 'cer.`id_certification` = s.`id_certification` AND cer.id_lang = ' . $context->language->id);
+		$query->leftJoin('user', 'c', 'c.`id_user` = s.`id_user`');
+		$query->innerJoin('address', 'a', 'a.`id_user` = c.`id_user`');
+		$query->leftJoin('student_education_state_lang', 'est', 'est.`id_student_education_state` = s.`id_student_education_state` AND est.`id_lang` = ' . $context->language->id);
+
+		if ($this->use_session) {
+			$query->leftJoin('education_session', 'es', 'es.`id_education_session` = s.`id_education_session`');
+		}
+
+		$query->leftJoin('product', 'e', 'e.`id_product` = s.`id_product`');
+		$query->leftJoin('gender_lang', 'gl', 'gl.`id_gender` = c.`id_gender` AND gl.`id_lang` = ' . $context->language->id);
+
+		if ($this->use_education_device) {
+			$query->leftJoin('education_supplies', 'esu', 'esu.`id_education_supplies` = s.`id_education_supplies` ');
+		}
+
+		$query->leftJoin('student_education_prerequis', 'sep', 'sep.`id_student_education` = s.`id_student_education` ');
+		$query->where('s.deleted = 0');
+		$query->where('s.id_student_education = ' . (int) $this->id);
+
+		$newStudent = Db::getInstance()->getRow($query);
+		$newStudent['certif_state'] = '<div style="color:red"><i class="fa-duotone fa-xmark"></i></div>';
+		$educations = Product::getEducationDetails($newStudent['id_product'], $newStudent['id_product_attribute'], false);
+
+		foreach ($educations as $key => $value) {
+			$newStudent[$key] = $value;
+		}
+
+		$newStudent['FinalPrice'] = $newStudent['price'] * (1 + $newStudent['rate'] / 100);
+
+		if ($this->use_sale_agent) {
+			$newStudent['agent'] = '';
+
+			if ($newStudent['id_sale_agent'] > 0) {
+				$agent = SaleAgent::getSaleAgentbyId($newStudent['id_sale_agent']);
+				$newStudent['agent'] = $agent['firstname'] . ' ' . $agent['lastname'];
+			}
+
+		}
+
+		$newStudent['connexionLenght'] = 0;
+		$newStudent['ratio'] = '0 %';
+
+		if (!Validate::isUnsignedId($newStudent['id_student_education_prerequis'])) {
+			$newStudent['id_student_education_prerequis'] = 0;
+		}
+
+		$idRequest = ParagridRequest::getRequestIdBy('StudentEducation');
+		$request = new ParagridRequest($idRequest, $context->language->id);
+		$students = $request->request;
+		array_unshift($students, $newStudent);
+
+		$request->request = Tools::jsonEncode($students, JSON_HEX_QUOT | JSON_HEX_TAG);
+		$request->update();
+	}
+
+	public function removeArchive() {
+
+		$context = Context::getContext();
+		$newPieces = [];
+		$idRequest = ParagridRequest::getRequestIdBy('StudentEducation');
+		$request = new ParagridRequest($idRequest, $context->language->id);
+		$students = $request->request;
+
+		foreach ($students as &$student) {
+
+			if ($student['id_student_education'] == $this->id) {
+				continue;
+			}
+
+			$newPieces[] = $student;
+		}
+
+		$request->request = Tools::jsonEncode($newPieces, JSON_HEX_QUOT | JSON_HEX_TAG);
+		$request->update();
 
 	}
 
@@ -1838,7 +1912,7 @@ class StudentEducationCore extends PhenyxObjectModel {
 			}
 
 		}
-       
+       // $this->compileArchive();
 		return true;
 
 	}
@@ -2107,7 +2181,7 @@ class StudentEducationCore extends PhenyxObjectModel {
 			$studentEducation->update(false, false);
 
 		}
-        
+        //$this->compileArchive();
 
 	}
 
@@ -2205,7 +2279,7 @@ class StudentEducationCore extends PhenyxObjectModel {
 			$session->educLaunch = 1;
 			$session->update();
 		}
-       
+       // $this->compileArchive();
 
 	}
 
@@ -2338,7 +2412,8 @@ class StudentEducationCore extends PhenyxObjectModel {
 			$suivie->add();
 
 		}
-       
+        //$this->compileArchive();
+
 	}
 
 	public function generateInvoice() {
@@ -2377,7 +2452,7 @@ class StudentEducationCore extends PhenyxObjectModel {
 			$suivie->add();
 		}
         
-       
+       // $this->compileArchive();
 
 	}
 
@@ -2881,7 +2956,7 @@ class StudentEducationCore extends PhenyxObjectModel {
 
 		}
         
-        
+        //$this->compileArchive();
 
 	}
 
